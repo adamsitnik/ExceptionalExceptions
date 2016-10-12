@@ -50,36 +50,27 @@ namespace Demo
             throw new ArgumentOutOfRangeException(nameof(number), "something bad happened");
         }
 
-        private KeyValuePair<int, string>[] numberToLetter = new []
-        {
-             new KeyValuePair<int, string>(1000, "M"),
-             new KeyValuePair<int, string>(900, "CM"),
-             new KeyValuePair<int, string>(500, "D"),
-             new KeyValuePair<int, string>(400, "CD"),
-             new KeyValuePair<int, string>(100, "C"),
-             new KeyValuePair<int, string>(90, "XC"),
-             new KeyValuePair<int, string>(50, "L"),
-             new KeyValuePair<int, string>(40, "XL"),
-             new KeyValuePair<int, string>(10, "X"),
-             new KeyValuePair<int, string>(9, "IX"),
-             new KeyValuePair<int, string>(5, "V"),
-             new KeyValuePair<int, string>(4, "IV"),
-             new KeyValuePair<int, string>(1, "I"),
-        };
+        private static readonly StringBuilder buffer = new StringBuilder();
 
         private string TailToRoman(int number)
         {
-            var buffer = new StringBuilder();
+            buffer.Length = 0;
 
-            start:            
-                if (number < 1) goto end;
-                foreach (var mapping in numberToLetter)
-                    if (number >= mapping.Key)
-                    {
-                        buffer.Append(mapping.Value);
-                        number = number - mapping.Key;
-                        goto start;
-                    }
+            start:
+            if (number < 1) goto end;
+            if (number >= 1000) { buffer.Append('M'); number -= 1000; goto start; }
+            if (number >= 900) { buffer.Append("CM"); number -= 900; goto start; }
+            if (number >= 500) { buffer.Append('D'); number -= 500; goto start; }
+            if (number >= 400) { buffer.Append("CD"); number -= 400; goto start; }
+            if (number >= 100) { buffer.Append('C'); number -= 100; goto start; }
+            if (number >= 90) { buffer.Append("XC"); number -= 90; goto start; }
+            if (number >= 50) { buffer.Append('L'); number -= 50; goto start; }
+            if (number >= 40) { buffer.Append("XL"); number -= 40; goto start; }
+            if (number >= 10) { buffer.Append('X'); number -= 10; goto start; }
+            if (number >= 9) { buffer.Append("IX"); number -= 9; goto start; }
+            if (number >= 5) { buffer.Append('V'); number -= 5; goto start; }
+            if (number >= 4) { buffer.Append("IV"); number -= 4; goto start; }
+            if (number >= 1) { buffer.Append('I'); number -= 1; goto start; }
 
             end:
             return buffer.ToString();
