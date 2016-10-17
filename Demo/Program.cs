@@ -20,9 +20,11 @@ namespace Demo
                 new ExceptionInFinally(),
                 new FireForgetAndFail(),
                 new ReflectionWrapsExceptions(),
-                new TypeInitializationExceptionSample()
+                new TypeInitializationExceptionSample(),
+                new ThrowingAnything()
             );
 
+            Console.WriteLine("Press any key to terminate");    
             Console.ReadKey();
         }
 
@@ -30,6 +32,7 @@ namespace Demo
         {
             for (int i = 0; i < demos.Length; i++)
                 Console.WriteLine($"#{i} {demos[i].GetType().GetTypeInfo().Name}");
+            Console.WriteLine();
 
             Console.WriteLine("Please select the demo by putting it's number here:");
             var input = Console.ReadLine()?.Replace("#", String.Empty);

@@ -1,9 +1,8 @@
-﻿{
+{
   "version": "1.0.0-*",
   "buildOptions": {
     "emitEntryPoint": true
   },
-
   "frameworks": {
     "netcoreapp1.0": {
       "imports": "dnxcore50",
@@ -18,7 +17,9 @@
       }
     },
     "net45": {
-
     }
+  },
+  "dependencies": {
+    "System.Reflection.Emit.Lightweight": "4.0.1"
   }
 }
