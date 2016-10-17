@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace Demo
 {
-    public class AggregateExceptionSample
+    public class AggregateExceptionSample : IDemoable
     {
         public void Demo()
         {
@@ -21,15 +21,8 @@ namespace Demo
             catch (AggregateException aggregateException)
             {
                 foreach (Exception exception in aggregateException.InnerExceptions)
-                {
-                    Handle(exception);
-                }
+                    Console.WriteLine(exception.Message);
             }
-        }
-
-        private void Handle(Exception exception)
-        {
-            throw new NotImplementedException();
         }
     }
 }

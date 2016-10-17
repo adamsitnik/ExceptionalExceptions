@@ -3,9 +3,11 @@ using System.Threading.Tasks;
 
 namespace Demo
 {
-    public class AsyncAwaitAggregatedException
+    public class AsyncAwaitAggregatedException : IDemoable
     {
-        public async Task Demo()
+        public void Demo() => DemoAsync().Wait();
+
+        private async Task DemoAsync()
         {
             try
             {

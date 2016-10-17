@@ -3,7 +3,7 @@
 
 namespace Demo
 {
-    public class TypeInitializationExceptionSample
+    public class TypeInitializationExceptionSample : IDemoable
     {
         public void Demo()
         {

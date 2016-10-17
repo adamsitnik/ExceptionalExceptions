@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 
 namespace Demo
 {
-    public class FireForgetAndFail
+    public class FireForgetAndFail : IDemoable
     {
         public void Demo()
         {

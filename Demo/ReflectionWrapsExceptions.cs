@@ -5,7 +5,7 @@ using System.Reflection;
 
 namespace Demo
 {
-    public class ReflectionWrapsExceptions
+    public class ReflectionWrapsExceptions : IDemoable
     {
         public void Demo()
         {

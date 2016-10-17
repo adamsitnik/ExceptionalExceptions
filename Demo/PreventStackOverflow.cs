@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Demo
 {
-    public class PreventStackOverflow
+    public class PreventStackOverflow : IDemoable
     {
         public void Demo()
         {

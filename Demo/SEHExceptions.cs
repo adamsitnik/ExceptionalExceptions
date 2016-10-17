@@ -7,7 +7,7 @@ using System.Text;
 
 namespace Demo
 {
-    public class SEHExceptions
+    public class SEHExceptions : IDemoable
     {
         [DllImport("msvcrt.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
         static extern int sprintf(StringBuilder buffer, string format, __arglist);

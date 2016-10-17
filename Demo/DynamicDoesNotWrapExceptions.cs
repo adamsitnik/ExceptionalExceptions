@@ -5,7 +5,7 @@ using System.Reflection;
 
 namespace Demo
 {
-    public class DynamicDoesNotWrapExceptions
+    public class DynamicDoesNotWrapExceptions : IDemoable
     {
         public void Demo()
         {

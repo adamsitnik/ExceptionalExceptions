@@ -2,7 +2,7 @@
 
 namespace Demo
 {
-    public class ExceptionInFinally
+    public class ExceptionInFinally : IDemoable
     {
         public void Demo()
         {
