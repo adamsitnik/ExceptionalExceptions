@@ -6,7 +6,7 @@ namespace Benchmarks
 {
     public class TailRecursionBenchmarks
     {
-        [Params(1, 10, 100, 1000, 10000, 100000)]
+        [Params(7, 23, 158, 1721, 19734, 197341)] // these numbers can not be too simple to represent in Roman or the benchmark will not show any difference
         public int N;
 
         [Benchmark(Baseline = true)]
