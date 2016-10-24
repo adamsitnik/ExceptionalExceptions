@@ -7,7 +7,7 @@ namespace Demo
     {
         public void Demo() => DemoAsync().Wait();
 
-        private async Task DemoAsync()
+        async Task DemoAsync()
         {
             try
             {
@@ -19,7 +19,7 @@ namespace Demo
             }
         }
 
-        private Task ThrowsAggregatedException()
+        Task ThrowsAggregatedException()
         {
             return Task.Factory.StartNew(
                     () =>
