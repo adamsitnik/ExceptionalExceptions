@@ -4,7 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using BenchmarkDotNet.Columns;
 using BenchmarkDotNet.Configs;
+using BenchmarkDotNet.Environments;
 using BenchmarkDotNet.Exporters;
+using BenchmarkDotNet.Exporters.Csv;
 using BenchmarkDotNet.Jobs;
 using BenchmarkDotNet.Order;
 using BenchmarkDotNet.Reports;
@@ -17,9 +19,9 @@ namespace Benchmarks
         public static void Main(string[] args)
         {
             var config = ManualConfig.CreateEmpty()
-                .With(Job.Dry.With(Platform.X64).With(Mode.Throughput).WithWarmupCount(1).WithTargetCount(10))
+                .With(Job.MediumRun.With(Platform.X64))
                 .With(DefaultConfig.Instance.GetLoggers().ToArray())
-                .With(PropertyColumn.Method, PropertyColumn.Runtime, PropertyColumn.Platform, PropertyColumn.Jit, StatisticColumn.Median, StatisticColumn.StdDev, StatisticColumn.Max, StatisticColumn.Min, BaselineScaledColumn.Scaled)
+                .With(DefaultConfig.Instance.GetColumnProviders().ToArray())
                 .With(MarkdownExporter.Default)
                 .With(HtmlExporter.Default)
                 // uncomment to get image representation
@@ -30,6 +32,10 @@ namespace Benchmarks
                 .RemoveBenchmarkFiles();
 
             BenchmarkRunner.Run<AlwaysFailing>(config);
+            BenchmarkRunner.Run<CallstackDepth>(config);
+            BenchmarkRunner.Run<CostOfFinally>(config);
+            BenchmarkRunner.Run<HavingAThrowInstruction>(config);
+            BenchmarkRunner.Run<TailRecursionBenchmarks>(config);
         }
 
         private class SlowestToFastestOrderProviderWithoutParameters : IOrderProvider

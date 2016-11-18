@@ -16,11 +16,10 @@ namespace Demo
                 new SuccessfulCER(),
                 new FailingCER(),
                 new SEHExceptions(),
-                new HandleStackOverflow(),
                 new ThreadAbortExceptionDemo(),
 #endif
-                new AggregateExceptionSample(),
                 new AsyncAwaitAggregatedException(),
+                new HowToHandleAggregatedException(),
                 new DynamicDoesNotWrapExceptions(),
                 new ExceptionInFinally(),
                 new FireForgetAndFail(),
@@ -44,7 +43,7 @@ namespace Demo
                 demos[number].Demo();
         }
 
-        private static string GetNumber(string[] args, IDemoable[] demos)
+        static string GetNumber(string[] args, IDemoable[] demos)
         {
             if (args.Any())
                 return args[0];

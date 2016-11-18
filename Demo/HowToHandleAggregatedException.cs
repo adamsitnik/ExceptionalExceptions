@@ -11,14 +11,16 @@ namespace Demo
         {
             var firstTask = ThrowsAggregatedException();
 
-            Task errorHandler = firstTask.ContinueWith(previous => Handle(previous.Exception), TaskContinuationOptions.OnlyOnFaulted);
+            Task errorHandler = firstTask.ContinueWith(previous => Handle(previous.Exception),
+                TaskContinuationOptions.OnlyOnFaulted);
 
-            Task processingResults = firstTask.ContinueWith(ProcessResult, TaskContinuationOptions.OnlyOnRanToCompletion);
+            Task processingResults = firstTask.ContinueWith(ProcessResult,
+                TaskContinuationOptions.OnlyOnRanToCompletion);
 
             await Task.WhenAny(errorHandler, processingResults);
         }
 
-        private static void Handle(AggregateException ex)
+        void Handle(AggregateException ex)
         {
             foreach (var exception in ex.Flatten().InnerExceptions)
             {

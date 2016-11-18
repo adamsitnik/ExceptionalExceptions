@@ -9,7 +9,7 @@
       "type": "platform",
       "version": "1.0.0"
     },
-    "BenchmarkDotNet": "0.9.9"
+    "BenchmarkDotNet": "0.10.0"
   },
 
   "frameworks": {

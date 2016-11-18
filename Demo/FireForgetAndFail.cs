@@ -8,6 +8,9 @@ namespace Demo
         public void Demo()
         {
             Task.Run(() => Fail()); // the result is not stored or checked anywhere!!!
+
+            GC.Collect();
+            GC.WaitForPendingFinalizers();
         }
 
         private void Fail()
